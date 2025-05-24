@@ -51,72 +51,16 @@
            <h1>To-do list</h1>
            <!-- <label for="taskinput" id="taskInputLabel">Enter new task:</label> -->
            <input type="text" id="taskInput" placeholder="Type new task here">
-           <button  id="button" onclick="addTask()"> Add Task</button>
+           <button  id="button" onclick="add_todo()"> Add Task</button>
            <p id="warning" style="color: red;"></p>
         </div>
         
         <div id="sub-block">
            <h3>All tasks</h3>
-           <ul id="taskList"></ul>
+           <ul id="todoList"></ul>
         </div>
 
-        <script>
-            function addTask(){
-
-                //Get the input field
-                const input = document.getElementById("taskInput")
-
-                // Get the name of the new task from the input field
-                const newTask = input.value.trim();
-
-                //Get warning paragraph
-                const warning = document.getElementById("warning")
-                
-                //Check if task enter is not empty
-                if(newTask === ""){
-                    warning.textContent = "Please enter task!" //Add warning
-                    return; //Stop the function so that task doesn't get added 
-                } else {
-                    warning.textContent = "" // clear warning if input is ok
-                }
-
-
-
-                // Make the new task a list item
-                const newListItem = document.createElement("li"); // create a  new list item
-                newListItem.textContent = newTask; //Putting the new task in the new list item
-
-                //Make the task clickable to be marked as completed
-                newListItem.addEventListener("click", function () { newListItem.classList.toggle("Completed")
-                })
-
-                
-                //Create the remove button
-                removeBtn = document.createElement("button")
-                removeBtn.textContent = "Remove"
-                removeBtn.style.marginLeft = "10px";
-                removeBtn.style.cursor = "pointer";
-
-                //delete functionality of the delete button
-                removeBtn.addEventListener("click", function (event){
-                    event.stopPropagation(); //stops the click from triggering the task's click event
-                    newListItem.remove(); // delete the task
-                })
-
-                //Add the delete button to the task
-                newListItem.appendChild(removeBtn);
-
-                //Get the List of tasks
-                const taskList = document.getElementById("taskList");
-
-                //Append the new task to the List of tasks
-                taskList.appendChild(newListItem)
-
-                //Clear the input field
-                input.value = ""
-
-            }
-        </script>
+        <script src="app.js"></script>
     </body>
 </html>
  
